@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatMe</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <img class="logo" src="logo.png" alt="ChatMe Logo" width="50" height="50">
+            <h1>ChatMe</h1>
+        </div>
+        <div class="navbar-right">
+            <div class="theme-toggle">
+                <i class="fas fa-moon" id="themeToggle"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <section class="chat-section">
+            <div class="chat-header">
+                <h2>Group Chat</h2>
+                <span class="online-count">0 online</span>
+            </div>
+            
+            <div class="container">
+                <!-- Chat messages will appear here -->
+            </div>
+
+            <div class="input-area">
+                <form id="sendMessageForm">
+                    <div class="input-wrapper">
+                        <button type="button" id="emojiButton" class="tool-button">
+                            <i class="far fa-smile"></i>
+                        </button>
+                        <input type="text" id="messageInput" placeholder="Type a message...">
+                        <button type="button" id="attachButton" class="tool-button">
+                            <i class="fas fa-paperclip"></i>
+                        </button>
+                        <input type="file" id="fileInput" style="display: none">
+                    </div>
+                    <button type="submit" class="send-button">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+                <div id="emojiPicker" class="emoji-picker"></div>
+            </div>
+        </section>
+
+        <aside class="sidebar">
+            <div class="users-panel">
+                <h2>Users</h2>
+                <ul id="userList">
+                    <!-- Users will appear here -->
+                </ul>
+            </div>
+
+            <div class="user-info-panel">
+                <h2>User Info</h2>
+                <div id="userInfo">
+                    <!-- User info will appear here -->
+                </div>
+                <button id="logoutButton">Logout</button>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 ChatMe - Real-time chat application</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="js/client.js"></script>
+</body>
+</html>
