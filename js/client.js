@@ -8,6 +8,7 @@ const messageContainer = document.querySelector(".container");
 const userList = document.getElementById('userList');
 const userInfo = document.getElementById('userInfo');
 const logoutButton = document.getElementById('logoutButton');
+const onlineCount = document.querySelector('.online-count');
 
 // Global variables
 let username = '';
@@ -85,6 +86,7 @@ const updateUserList = () => {
         
         userList.appendChild(userItem);
     });
+    onlineCount.innerText = `${Object.keys(activeUsers).length} online`;
 };
 
 // Update user information
@@ -168,13 +170,13 @@ const initializeApp = async () => {
     // Store username in session storage for persistence
     sessionStorage.setItem('chatmeUsername', username);
     
-    // Update UI with user info
-    activeUsers[socket.id] = username;
     updateUserList();
-    updateUserInfo();
+    // updateUserInfo();
     
     // Connect to server
-    socket.emit('new-user-joined', username);
+    socket.emit('new-user-joined', {
+        name: username
+    });
     
     // Show welcome message
     showWelcomeMessage();
@@ -190,28 +192,30 @@ if (savedUsername) {
 }
 
 // Socket event handlers
-socket.on('user-joined', (data) => {
-    const { name, users } = data;
+socket.on('new-user-joined', (data) => {
+    const { name, id } = data;
     console.log(`${name} joined the chat`);
     
     // Update active users
-    Object.assign(activeUsers, users);
+    activeUsers[id] = name;
     updateUserList();
     
-    // Show join notification
-    appendMessage({
-        message: `${name} joined the chat`,
-        user: 'System',
-        position: 'notification',
-        isNotification: true
-    });
+    if (name !== username) {
+        // Show join notification
+        appendMessage({
+            message: `${name} joined the chat`,
+            user: 'System',
+            position: 'notification',
+            isNotification: true
+        });
+    }
 });
 
 socket.on('receive', data => {
-    console.log(`Message received from ${data.user}: ${data.message}`);
+    console.log(`Message received from ${activeUsers[socket.id]}: ${data.message}`);
     
     // Remove typing indicator if present
-    const typingElement = document.getElementById(`typing-${data.user}`);
+    const typingElement = document.getElementById(`typing-${activeUsers[socket.id]}`);
     if (typingElement) {
         typingElement.remove();
     }
@@ -227,7 +231,7 @@ socket.on('receive', data => {
         // This is a message from someone else
         appendMessage({
             message: data.message,
-            user: data.user,
+            user: activeUsers[socket.id],
             position: 'left'
         });
         
@@ -278,7 +282,10 @@ form.addEventListener('submit', (e) => {
     const message = messageInput.value.trim();
     if (message !== '') {
         console.log(`Sending message: ${message}`);
-        socket.emit('send', message);
+        socket.emit('send', {
+            message,
+            timestamp: new Date().getTime()
+        });
         messageInput.value = '';
         messageInput.focus();
     }
@@ -337,7 +344,10 @@ document.getElementById('attachButton').addEventListener('click', () => {
 logoutButton.addEventListener('click', () => {
     if (confirm('Are you sure you want to leave the chat?')) {
         sessionStorage.removeItem('chatmeUsername');
-        window.location.reload();
+        // window.location.reload();
+        socket.emit("leave", {
+            name: username
+        })
     }
 });
 
