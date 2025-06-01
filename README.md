@@ -1,14 +1,13 @@
 # Real-Time Chat Application
 
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/realtime-chat-app.svg?style=social&label=Star)](https://github.com/yourusername/realtime-chat-app)
-[![GitHub forks](https://img.shields.io/github/forks/yourusername/realtime-chat-app.svg?style=social&label=Fork)](https://github.com/yourusername/realtime-chat-app/fork)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub stars](https://img.shields.io/github/stars/yourusername/realtime-chat-app.svg?style=social&label=Star)](https://github.com/nandanaap/realtime-chat-app)
+[![GitHub forks](https://img.shields.io/github/forks/yourusername/realtime-chat-app.svg?style=social&label=Fork)](https://github.com/nandanaap/realtime-chat-app/fork)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D12.0.0-brightgreen)](https://nodejs.org/)
 [![WebSocket](https://img.shields.io/badge/WebSocket-Enabled-blue.svg)](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
 
 A modern, responsive real-time chat application built with WebSocket technology and JavaScript, enabling seamless instant messaging between users.
 
-![Chat App Demo](https://via.placeholder.com/800x400/1e1e2e/cdd6f4?text=Real-Time+Chat+Application+Demo)
+
 
 > 💬 Experience real-time communication with this lightweight, fast, and user-friendly chat application!
 
