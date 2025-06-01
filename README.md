@@ -1,7 +1,7 @@
 # Real-Time Chat Application
 
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/realtime-chat-app.svg?style=social&label=Star)](https://github.com/nandanaap/realtime-chat-app)
-[![GitHub forks](https://img.shields.io/github/forks/yourusername/realtime-chat-app.svg?style=social&label=Fork)](https://github.com/nandanaap/realtime-chat-app/fork)
+[![GitHub stars](https://img.shields.io/github/stars/yourusername/realtime-chat-app.svg?style=social&label=Star)](https://github.com/nandanaap/real-time-chat-application)
+[![GitHub forks](https://img.shields.io/github/forks/yourusername/realtime-chat-app.svg?style=social&label=Fork)](https://github.com/nandanaap/real-time-chat-application/fork)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D12.0.0-brightgreen)](https://nodejs.org/)
 [![WebSocket](https://img.shields.io/badge/WebSocket-Enabled-blue.svg)](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
 
